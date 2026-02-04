@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FactorySphere ERP</title>
+    <link rel="stylesheet" href="./styles/app.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-slate-100 text-slate-900">
+    <div class="min-h-screen flex" id="app">
+      <aside class="w-64 bg-slate-900 text-white p-6 flex flex-col gap-6">
+        <div>
+          <h1 class="text-2xl font-semibold">FactorySphere</h1>
+          <p class="text-sm text-slate-300">Manufacturing ERP Suite</p>
+        </div>
+        <nav class="flex-1 space-y-2 text-sm">
+          <button class="nav-item">Dashboard</button>
+          <button class="nav-item">Production</button>
+          <button class="nav-item">MES Live</button>
+          <button class="nav-item">Quality</button>
+          <button class="nav-item">Inventory</button>
+          <button class="nav-item">Accounting</button>
+          <button class="nav-item">HR & Payroll</button>
+          <button class="nav-item">Reports</button>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="px-3 py-2 rounded-md bg-slate-700 text-xs">Dark Mode</button>
+          <span class="text-xs text-slate-300">Admin</span>
+        </div>
+      </aside>
+      <main class="flex-1 p-8 space-y-6">
+        <header class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-semibold">Plant Overview</h2>
+            <p class="text-sm text-slate-500">Real-time operational visibility</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="primary-btn">Create Work Order</button>
+            <button class="secondary-btn">Export Report</button>
+          </div>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="card">
+            <p class="card-label">Production Status</p>
+            <h3 class="card-value">86% On Track</h3>
+            <p class="card-note text-emerald-600">+4% vs last week</p>
+          </div>
+          <div class="card">
+            <p class="card-label">Machine Utilization</p>
+            <h3 class="card-value">78% OEE</h3>
+            <p class="card-note text-amber-600">2 Bottlenecks</p>
+          </div>
+          <div class="card">
+            <p class="card-label">Quality Yield</p>
+            <h3 class="card-value">98.2% Pass</h3>
+            <p class="card-note text-emerald-600">NC rate below target</p>
+          </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="card lg:col-span-2">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="font-semibold">Production Plan vs Actual</h4>
+              <span class="status-pill status-running">Running</span>
+            </div>
+            <canvas id="productionChart" height="120"></canvas>
+          </div>
+          <div class="card">
+            <h4 class="font-semibold mb-3">Today’s Focus</h4>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between"><span>WO-10045</span><span class="status-pill status-running">Running</span></li>
+              <li class="flex justify-between"><span>WO-10046</span><span class="status-pill status-delayed">Delayed</span></li>
+              <li class="flex justify-between"><span>WO-10047</span><span class="status-pill status-rejected">Rework</span></li>
+              <li class="flex justify-between"><span>WO-10048</span><span class="status-pill status-running">Running</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="card">
+            <h4 class="font-semibold mb-3">Inventory Alerts</h4>
+            <div class="flex items-center justify-between text-sm">
+              <span>RM-STEEL-01</span>
+              <span class="text-amber-600">Below Min (8%)</span>
+            </div>
+            <div class="flex items-center justify-between text-sm mt-2">
+              <span>FG-MOTOR-01</span>
+              <span class="text-emerald-600">Healthy</span>
+            </div>
+          </div>
+          <div class="card">
+            <h4 class="font-semibold mb-3">Financial Snapshot</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span>Revenue</span><span>$325k</span></div>
+              <div class="flex justify-between"><span>Expenses</span><span>$210k</span></div>
+              <div class="flex justify-between font-semibold"><span>Net Margin</span><span>$115k</span></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./components/dashboard.js"></script>
+  </body>
+</html>
