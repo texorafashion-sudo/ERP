@@ -38,7 +38,7 @@ body {
   color: var(--text);
 }
 
-.app-shell {
+.job-shell {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
@@ -54,7 +54,7 @@ body {
   padding: 1rem;
 }
 
-.app-header {
+.job-header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -292,7 +292,7 @@ textarea {
 }
 
 @media (max-width: 640px) {
-  .app-header {
+  .job-header-main {
     flex-direction: column;
     align-items: flex-start;
   }

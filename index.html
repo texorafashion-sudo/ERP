@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upcoming Jobs Alert & Status Manager</title>
+    <title>Upcoming Jobs Alert & Job Status Manager</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="app-header card">
+    <div class="job-shell">
+      <header class="job-header-main card">
         <div>
-          <h1>Jobs Dashboard</h1>
-          <p class="muted">Manage upcoming deadlines, status updates, and priorities in one place.</p>
+          <h1>Job Management Dashboard</h1>
+          <p class="muted">Track upcoming jobs, update status, and manage priorities in one place.</p>
         </div>
         <button id="darkModeToggle" class="btn secondary" type="button" aria-label="Toggle dark mode">
           🌙 Dark Mode
@@ -20,7 +20,7 @@
 
       <section id="notificationBanner" class="notification hidden" aria-live="polite"></section>
 
-      <section class="stats-grid" aria-label="Job statistics">
+      <section class="stats-grid" aria-label="Job status summary">
         <article class="stat-card card">
           <h2>Total Jobs</h2>
           <p id="totalJobs">0</p>
