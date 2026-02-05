@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Jobs Alert & Job Status Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="job-shell">
+      <header class="job-header-main card">
+        <div>
+          <h1>Job Management Dashboard</h1>
+          <p class="muted">Track upcoming jobs, update status, and manage priorities in one place.</p>
+        </div>
+        <button id="darkModeToggle" class="btn secondary" type="button" aria-label="Toggle dark mode">
+          🌙 Dark Mode
+        </button>
+      </header>
+
+      <section id="notificationBanner" class="notification hidden" aria-live="polite"></section>
+
+      <section class="stats-grid" aria-label="Job status summary">
+        <article class="stat-card card">
+          <h2>Total Jobs</h2>
+          <p id="totalJobs">0</p>
+        </article>
+        <article class="stat-card card">
+          <h2>Pending</h2>
+          <p id="pendingJobs">0</p>
+        </article>
+        <article class="stat-card card">
+          <h2>In Progress</h2>
+          <p id="inProgressJobs">0</p>
+        </article>
+        <article class="stat-card card">
+          <h2>Completed</h2>
+          <p id="completedJobs">0</p>
+        </article>
+      </section>
+
+      <section class="card completion-section" aria-label="Completion summary">
+        <div class="completion-row">
+          <span id="completionText">0 of 0 jobs completed (0%)</span>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progressBar" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout-grid">
+        <article class="card form-card">
+          <h2>Add Job</h2>
+          <form id="jobForm" novalidate>
+            <div class="form-grid">
+              <label>
+                Job Name
+                <input type="text" name="jobName" required placeholder="Website Redesign" />
+              </label>
+              <label>
+                Client Name
+                <input type="text" name="clientName" required placeholder="Acme Corp" />
+              </label>
+              <label>
+                Job Type
+                <input type="text" name="jobType" required placeholder="Design, Development..." />
+              </label>
+              <label>
+                Start Date
+                <input type="date" name="startDate" required />
+              </label>
+              <label>
+                Due Date
+                <input type="date" name="dueDate" required />
+              </label>
+              <label>
+                Priority
+                <select name="priority" required>
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </label>
+              <label>
+                Status
+                <select name="status" required>
+                  <option value="Pending" selected>Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Notes (optional)
+                <textarea name="notes" rows="3" placeholder="Extra details or reminders..."></textarea>
+              </label>
+            </div>
+            <button class="btn primary" type="submit">Add Job</button>
+          </form>
+        </article>
+
+        <article class="card filters-card">
+          <h2>Search & Filter</h2>
+          <div class="filters-grid">
+            <label>
+              Search by Job or Client
+              <input id="searchInput" type="search" placeholder="Search..." />
+            </label>
+            <label>
+              Filter by Status
+              <select id="statusFilter">
+                <option value="All">All</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </label>
+            <label>
+              Filter by Priority
+              <select id="priorityFilter">
+                <option value="All">All</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </label>
+          </div>
+        </article>
+      </section>
+
+      <section class="jobs-sections" aria-label="Job lists">
+        <article class="card">
+          <h2>Active Jobs</h2>
+          <div id="activeJobs" class="jobs-list"></div>
+        </article>
+
+        <article class="card">
+          <h2>Completed Jobs</h2>
+          <div id="completedJobsList" class="jobs-list"></div>
+        </article>
+      </section>
+    </div>
+
+    <template id="jobCardTemplate">
+      <article class="job-card">
+        <header class="job-header">
+          <div>
+            <h3 class="job-title"></h3>
+            <p class="job-client muted"></p>
+          </div>
+          <div class="badges"></div>
+        </header>
+
+        <dl class="job-meta">
+          <div><dt>Type</dt><dd class="job-type"></dd></div>
+          <div><dt>Start</dt><dd class="job-start"></dd></div>
+          <div><dt>Due</dt><dd class="job-due"></dd></div>
+        </dl>
+
+        <p class="job-notes muted"></p>
+
+        <div class="job-actions">
+          <label>
+            Status
+            <select class="status-select">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </label>
+          <button class="btn danger delete-btn" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
